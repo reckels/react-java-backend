@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.reactjavaapp.model.User;
 import com.example.reactjavaapp.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+
 @CrossOrigin(origins = "http://localhost:3000")
+@Slf4j
 @RestController
 @RequestMapping("api/")
 public class UserController {
