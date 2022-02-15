@@ -15,11 +15,18 @@ class UserComponent extends React.Component {
             this.setState({users: response.data})
         });
     }
+    
+    handleClick(){
+		UserService.getUsers().then((response) => {
+			this.setState({users: response.data})
+		});
+	}
 
     render(){
         return(
             <div>
                 <h1 className="text-center">Users List</h1>
+                <button onClick={this.handleClick.bind(this)}>Get All</button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -43,6 +50,7 @@ class UserComponent extends React.Component {
                         }
                     </tbody>
                 </table>
+                
             </div>
         );
     }
