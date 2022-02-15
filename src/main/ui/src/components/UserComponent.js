@@ -1,32 +1,22 @@
 import React from 'react';
-import UserService from '../services/UserService';
 
 class UserComponent extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleClick.bind(this);
+	}
 
-    constructor(props){
-        super(props)
-        this.state = {
-            users: []
-        }
-    }
-
-    componentDidMount(){
-        UserService.getUsers().then((response) => {
-            this.setState({users: response.data})
-        });
-    }
     
-    handleClick(){
-		UserService.getUsers().then((response) => {
-			this.setState({users: response.data})
-		});
+    handleClick = () => {
+		this.props.refresh();
 	}
 
     render(){
+		const users = this.props.users;
         return(
             <div>
                 <h1 className="text-center">Users List</h1>
-                <button onClick={this.handleClick.bind(this)}>Get All</button>
+                <button onClick={this.handleClick}>Get All</button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -38,7 +28,7 @@ class UserComponent extends React.Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.users.map(
+                            users.map(
                                 user =>
                                 <tr key = {user.id}>
                                     <td>{user.id}</td>

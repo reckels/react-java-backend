@@ -1,5 +1,6 @@
 import React from 'react';
 import UserService from '../services/UserService';
+import UserCount from './UserCount';
 
 class AddUser extends React.Component{
 	constructor(props){
@@ -36,10 +37,12 @@ class AddUser extends React.Component{
 	render(){
 		return(
 			<div>
-				<input type="text" onChange={this.handleFirstNameChanged.bind(this)} placeholder="First Name"></input>
-				<input type="text" onChange={this.handleLastNameChanged.bind(this)} placeholder="Last Name"></input>
-				<input type="text" onChange={this.handleEmailChanged.bind(this)} placeholder="Email"></input>
-				<button onClick={this.handleClick}>Add User</button>
+				<div className="user-input">
+					<input type="text" onChange={this.handleFirstNameChanged.bind(this)} placeholder="First Name"></input>
+					<input type="text" onChange={this.handleLastNameChanged.bind(this)} placeholder="Last Name"></input>
+					<input type="text" onChange={this.handleEmailChanged.bind(this)} placeholder="Email"></input>
+					<button onClick={this.handleClick}>Add User</button>
+				</div>
 			</div>
 		);
 	}
